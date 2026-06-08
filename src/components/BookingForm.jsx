@@ -55,6 +55,7 @@ export default function BookingForm() {
   const [selectedSlot, setSelectedSlot] = useState(null)
   const [selectedTime, setSelectedTime] = useState(null)
   const [submitted, setSubmitted]     = useState(false)
+  const [tokenNumber, setTokenNumber] = useState(null)
   const [loading, setLoading]         = useState(false)
   const [error, setError]             = useState(null)
   const [fieldErrors, setFieldErrors] = useState({})
@@ -141,7 +142,7 @@ export default function BookingForm() {
     setLoading(true)
     setError(null)
     try {
-      const { error: insertError } = await supabase.from('bookings').insert([{
+      const { data: inserted, error: insertError } = await supabase.from('bookings').insert([{
         name:           form.name,
         phone:          form.phone,
         location:       form.location,
@@ -150,8 +151,9 @@ export default function BookingForm() {
         time_slot:      timeSlotValue,
         message:        form.message,
         status:         'pending',
-      }])
+      }]).select().single()
       if (insertError) throw insertError
+      setTokenNumber(inserted?.token_number ?? null)
       setSubmitted(true)
     } catch {
       setError('Something went wrong. Please call us directly at 09912384430')
@@ -172,6 +174,7 @@ export default function BookingForm() {
       `📞 Phone: ${form.phone}\n` +
       `📍 Branch: ${form.location}\n` +
       `🏥 Condition: ${form.condition}\n` +
+      (tokenNumber ? `🎫 Token Number: #${tokenNumber}\n` : '') +
       `📅 Date: ${form.date} (${dayName})\n` +
       `⏰ Time: ${selectedSlot?.label} — ${selectedTime}\n\n` +
       `Kindly confirm my appointment. JazakAllah!`
@@ -245,6 +248,15 @@ export default function BookingForm() {
             <div className="flex flex-col items-center text-center gap-4">
               <CheckCircle size={64} className="text-green-500" />
               <h3 className="text-2xl font-black text-gray-900">Booking Submitted!</h3>
+              {tokenNumber && (
+                <div
+                  className="rounded-2xl px-8 py-4 text-white"
+                  style={{ backgroundColor: '#1A4A2E' }}
+                >
+                  <p className="text-xs uppercase tracking-widest" style={{ color: '#86efac' }}>Your Token Number</p>
+                  <p className="text-4xl font-black mt-1">#{tokenNumber}</p>
+                </div>
+              )}
               <p className="text-sm text-gray-500 max-w-xs">
                 Tap the button below to notify us on WhatsApp — we'll confirm your appointment shortly.
               </p>
@@ -271,6 +283,7 @@ export default function BookingForm() {
                   setSelectedSlot(null)
                   setSelectedTime(null)
                   setSubmitted(false)
+                  setTokenNumber(null)
                 }}
                 className="w-full border border-gray-200 text-gray-600 py-3 rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors"
               >

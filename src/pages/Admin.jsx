@@ -86,6 +86,7 @@ function BookingCard({ booking: b, onStatusChange, onDelete, confirmDeleteId, se
         <span className="text-slate-300 text-sm">{b.condition}</span>
       </div>
       <div className="text-xs text-slate-400 space-y-0.5">
+        {b.token_number && <p>🎫 Token #{b.token_number}</p>}
         <p>📅 {formatDate(b.preferred_date)}{b.time_slot ? ` — ${b.time_slot}` : ''}</p>
         <p>🕐 Booked: {formatDateTime(b.created_at)}</p>
         {b.message && <p>💬 {b.message}</p>}
@@ -513,7 +514,7 @@ function Dashboard({ onLogout }) {
             <table className="w-full text-sm">
               <thead style={{ backgroundColor: '#0f172a' }}>
                 <tr>
-                  {['#', 'Patient', 'Phone', 'Branch', 'Condition', 'Date', 'Time Slot', 'Booked At', 'Status', 'Actions'].map((h) => (
+                  {['#', 'Token', 'Patient', 'Phone', 'Branch', 'Condition', 'Date', 'Time Slot', 'Booked At', 'Status', 'Actions'].map((h) => (
                     <th key={h} className="py-4 px-4 text-left text-xs font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">
                       {h}
                     </th>
@@ -525,7 +526,7 @@ function Dashboard({ onLogout }) {
                   [...Array(5)].map((_, i) => <SkeletonRow key={i} />)
                 ) : filtered.length === 0 ? (
                   <tr>
-                    <td colSpan={10} className="py-20 text-center">
+                    <td colSpan={11} className="py-20 text-center">
                       <div className="text-5xl mb-4">📋</div>
                       <p className="text-xl font-bold text-white">No bookings yet</p>
                       <p className="text-slate-400 mt-2">New bookings will appear here in real-time</p>
@@ -538,6 +539,15 @@ function Dashboard({ onLogout }) {
                       <tr key={b.id}
                         className="border-t border-[#334155] hover:bg-white/5 transition-colors">
                         <td className="px-4 py-4 text-slate-500 text-xs">{idx + 1}</td>
+                        <td className="px-4 py-4">
+                          {b.token_number ? (
+                            <span className="inline-flex items-center justify-center min-w-[2.25rem] px-2 py-1 rounded-full text-xs font-bold bg-[#4ade80]/20 text-[#4ade80]">
+                              #{b.token_number}
+                            </span>
+                          ) : (
+                            <span className="text-slate-600">—</span>
+                          )}
+                        </td>
                         <td className="px-4 py-4 font-semibold text-white whitespace-nowrap">{b.name}</td>
                         <td className="px-4 py-4">
                           <a href={`tel:${b.phone}`} className="font-mono text-[#4ade80] hover:text-green-300 text-sm">{b.phone}</a>
