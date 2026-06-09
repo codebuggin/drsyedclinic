@@ -63,7 +63,7 @@ export default function Hero() {
       {/* ════════════════ HERO SECTION ════════════════ */}
       <section
         id="home"
-        className="min-h-[90vh] flex flex-col md:flex-row"
+        className="min-h-[90vh] flex flex-col md:flex-row overflow-hidden"
         style={{ backgroundColor: '#FDFAF4' }}
       >
         {/* ── LEFT COLUMN ── */}
@@ -289,7 +289,7 @@ export default function Hero() {
 
       {/* ════════════════ MARQUEE STRIP ════════════════ */}
       <div
-        className="w-full overflow-hidden py-3 border-t-2"
+        className="w-full overflow-hidden py-3 border-t-2 max-w-[100vw]"
         style={{ backgroundColor: '#1A4A2E', borderColor: '#C9922A' }}
       >
         <style>{`

@@ -198,9 +198,9 @@ export default function BookingForm() {
     <section id="booking" className="py-12 md:py-24 px-4 sm:px-6" style={{ backgroundColor: '#FDFAF4' }}>
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-start">
 
-        {/* ── LEFT: info panel ── */}
+        {/* ── LEFT: info panel — shown second on mobile, first on desktop ── */}
         <div
-          className="rounded-3xl p-6 sm:p-10 text-white flex flex-col justify-between"
+          className="order-2 lg:order-1 rounded-3xl p-6 sm:p-10 text-white flex flex-col justify-between"
           style={{ backgroundColor: '#1A4A2E', minHeight: '520px' }}
         >
           <div>
@@ -239,8 +239,8 @@ export default function BookingForm() {
           </div>
         </div>
 
-        {/* ── RIGHT: form / success ── */}
-        <div className="bg-white rounded-3xl p-5 sm:p-10 shadow-xl border border-gray-100">
+        {/* ── RIGHT: form — shown first on mobile, second on desktop ── */}
+        <div className="order-1 lg:order-2 bg-white rounded-3xl p-5 sm:p-10 shadow-xl border border-gray-100">
 
           {submitted ? (
             /* ── SUCCESS ── */
