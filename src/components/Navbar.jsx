@@ -27,7 +27,7 @@ export default function Navbar() {
         scrolled ? 'shadow-md' : ''
       }`}
     >
-      <div className="px-8 py-4 flex items-center justify-between">
+      <div className="px-4 sm:px-8 py-4 flex items-center justify-between">
         {/* Logo wordmark */}
         <a href="#home" className="flex flex-col leading-none">
           <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#C9922A' }}>

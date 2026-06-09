@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-6" style={{ backgroundColor: '#FDFAF4' }}>
+    <section id="about" className="py-14 md:py-24 px-4 sm:px-6" style={{ backgroundColor: '#FDFAF4' }}>
       {/* Section label — centered above columns */}
       <div className="text-center mb-12">
         <span className="inline-block border border-green-700 text-green-800 text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full">
@@ -10,7 +10,7 @@ export default function About() {
         </span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
         {/* ── LEFT: visual panel ── */}
         <motion.div
           className="relative pb-12"
@@ -63,7 +63,7 @@ export default function About() {
             className="absolute -top-4 -right-4 text-white rounded-2xl px-5 py-3 shadow-xl text-center z-30"
             style={{ backgroundColor: '#C9922A' }}
           >
-            <span className="text-3xl font-black block leading-none">15+</span>
+            <span className="text-3xl font-black block leading-none">20+</span>
             <span className="text-xs">Years of Practice</span>
           </div>
 
@@ -109,7 +109,7 @@ export default function About() {
             {/* Paragraphs */}
             <div className="mt-6 text-gray-600 leading-relaxed space-y-4" style={{ fontSize: '15px' }}>
               <p>
-                Dr. Sayed Tamizuddin is a distinguished classical homoeopath with over 15 years of
+                Dr. Sayed Tamizuddin is a distinguished classical homoeopath with over 20 years of
                 dedicated practice in Hyderabad. Holding a Medical Degree in Homoeopathy along with a
                 Master's in Applied Psychology, he brings a truly holistic perspective to healing —
                 treating the whole person, not just the disease.

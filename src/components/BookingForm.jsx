@@ -122,7 +122,6 @@ export default function BookingForm() {
     if (!form.name)      errs.name = true
     if (!form.phone)     errs.phone = true
     if (!form.location)  errs.location = true
-    if (!form.condition) errs.condition = true
     if (!form.date)                          errs.date = true
     else if (!dateValid)                     errs.dateUnavailable = true
     if (!selectedSlot)   errs.slot = true
@@ -196,12 +195,12 @@ export default function BookingForm() {
     }`
 
   return (
-    <section id="booking" className="py-24 px-6" style={{ backgroundColor: '#FDFAF4' }}>
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section id="booking" className="py-12 md:py-24 px-4 sm:px-6" style={{ backgroundColor: '#FDFAF4' }}>
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-start">
 
         {/* ── LEFT: info panel ── */}
         <div
-          className="rounded-3xl p-10 text-white flex flex-col justify-between"
+          className="rounded-3xl p-6 sm:p-10 text-white flex flex-col justify-between"
           style={{ backgroundColor: '#1A4A2E', minHeight: '520px' }}
         >
           <div>
@@ -241,7 +240,7 @@ export default function BookingForm() {
         </div>
 
         {/* ── RIGHT: form / success ── */}
-        <div className="bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
+        <div className="bg-white rounded-3xl p-5 sm:p-10 shadow-xl border border-gray-100">
 
           {submitted ? (
             /* ── SUCCESS ── */
@@ -249,12 +248,18 @@ export default function BookingForm() {
               <CheckCircle size={64} className="text-green-500" />
               <h3 className="text-2xl font-black text-gray-900">Booking Submitted!</h3>
               {tokenNumber && (
-                <div
-                  className="rounded-2xl px-8 py-4 text-white"
-                  style={{ backgroundColor: '#1A4A2E' }}
-                >
-                  <p className="text-xs uppercase tracking-widest" style={{ color: '#86efac' }}>Your Token Number</p>
-                  <p className="text-4xl font-black mt-1">#{tokenNumber}</p>
+                <div className="w-full">
+                  <div
+                    className="rounded-2xl px-8 py-5 text-white text-center"
+                    style={{ backgroundColor: '#1A4A2E' }}
+                  >
+                    <p className="text-xs uppercase tracking-widest" style={{ color: '#86efac' }}>Your Token Number</p>
+                    <p className="text-5xl font-black mt-1">#{tokenNumber}</p>
+                  </div>
+                  <div className="mt-2 flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
+                    <span className="text-lg leading-none mt-0.5">📸</span>
+                    <p className="text-xs text-amber-800 font-medium">Please screenshot your token number. You'll need it when you arrive at the clinic.</p>
+                  </div>
                 </div>
               )}
               <p className="text-sm text-gray-500 max-w-xs">
@@ -325,9 +330,8 @@ export default function BookingForm() {
               {fieldErrors.location && <p className="text-red-500 text-xs mb-3">Required</p>}
 
               {/* Condition */}
-              <label className={labelClass}>Condition / Complaint *</label>
+              <label className={labelClass}>Condition / Complaint <span className="normal-case text-gray-400 font-normal">(Optional)</span></label>
               <input type="text" placeholder="e.g. Diabetes, Migraine, Skin Disease…" {...field('condition')} />
-              {fieldErrors.condition && <p className="text-red-500 text-xs mb-3">Required</p>}
 
               {/* Date */}
               <div className="mb-4">

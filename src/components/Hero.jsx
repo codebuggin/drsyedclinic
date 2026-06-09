@@ -68,7 +68,7 @@ export default function Hero() {
       >
         {/* ── LEFT COLUMN ── */}
         <motion.div
-          className="relative flex-1 overflow-hidden flex flex-col justify-center px-6 sm:px-12 lg:px-16 xl:px-20 py-12 md:py-0 md:basis-1/2"
+          className="relative flex-1 overflow-hidden flex flex-col justify-center px-5 sm:px-12 lg:px-16 xl:px-20 py-10 md:py-0 md:basis-1/2"
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
@@ -98,7 +98,7 @@ export default function Hero() {
             <motion.h1
               variants={fadeUp}
               className="mt-6 font-black leading-[1.05] text-gray-900"
-              style={{ fontSize: 'clamp(2.8rem, 5vw, 3.75rem)' }}
+              style={{ fontSize: 'clamp(2.2rem, 5vw, 3.75rem)' }}
             >
               Heal From
               <br />
@@ -113,7 +113,7 @@ export default function Hero() {
               variants={fadeUp}
               className="mt-5 text-base text-gray-500 leading-relaxed max-w-md"
             >
-              Dr. Sayed Tamizuddin brings over 15 years of classical homoeopathic expertise —
+              Dr. Sayed Tamizuddin brings over 20 years of classical homoeopathic expertise —
               treating chronic and acute conditions with precision, care, and zero side effects.
             </motion.p>
 
@@ -136,17 +136,17 @@ export default function Hero() {
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div variants={fadeUp} className="mt-5 flex gap-4 flex-wrap">
+            <motion.div variants={fadeUp} className="mt-5 flex flex-col sm:flex-row gap-3">
               <a
                 href="#booking"
-                className="inline-block px-8 py-4 rounded-2xl font-semibold text-sm text-white transition-colors duration-200 hover:bg-green-900"
+                className="flex-1 text-center px-6 py-4 rounded-2xl font-semibold text-sm text-white transition-colors duration-200 hover:bg-green-900"
                 style={{ backgroundColor: '#1A4A2E' }}
               >
                 Book Appointment →
               </a>
               <a
                 href="tel:09912384430"
-                className="inline-block px-7 py-4 rounded-2xl font-semibold text-sm text-white transition-opacity duration-200 hover:opacity-90"
+                className="flex-1 text-center px-6 py-4 rounded-2xl font-semibold text-sm text-white transition-opacity duration-200 hover:opacity-90"
                 style={{ backgroundColor: '#C9922A' }}
               >
                 📞 Call Now
@@ -156,18 +156,18 @@ export default function Hero() {
             {/* Trust stats */}
             <motion.div
               variants={fadeUp}
-              className="mt-6 pt-6 border-t border-gray-200 grid grid-cols-3 gap-6 bg-green-50/50 rounded-2xl p-4"
+              className="mt-6 pt-6 border-t border-gray-200 grid grid-cols-3 gap-2 bg-green-50/50 rounded-2xl p-3 sm:p-4"
             >
               {[
-                { num: '15+', label: 'Years of Practice' },
+                { num: '20+', label: 'Years of Practice' },
                 { num: '2', label: 'Locations in Hyd' },
                 { num: '20+', label: 'Conditions Treated' },
               ].map(({ num, label }) => (
                 <div key={label}>
-                  <div className="text-4xl font-black" style={{ color: '#1A4A2E' }}>
+                  <div className="text-2xl sm:text-4xl font-black" style={{ color: '#1A4A2E' }}>
                     {num}
                   </div>
-                  <div className="text-sm text-gray-400 mt-1">{label}</div>
+                  <div className="text-xs sm:text-sm text-gray-400 mt-1 leading-tight">{label}</div>
                 </div>
               ))}
             </motion.div>
@@ -176,7 +176,7 @@ export default function Hero() {
 
         {/* ── RIGHT COLUMN ── */}
         <div
-          className="relative flex-1 md:basis-1/2 overflow-visible flex items-center justify-center min-h-80 md:min-h-[90vh] max-h-[90vh] py-16 border-l border-green-200"
+          className="hidden md:flex relative flex-1 md:basis-1/2 overflow-visible items-center justify-center md:min-h-[90vh] max-h-[90vh] py-16 border-l border-green-200"
           style={{
             background:
               'radial-gradient(ellipse at center, #d4e9c2 0%, #c0d9a8 60%, #a8c990 100%)',
@@ -207,7 +207,7 @@ export default function Hero() {
                 M.D. Homoeo · Classical Homoeopath
               </p>
               <div className="flex flex-wrap gap-1.5 justify-center mt-3">
-                {['15+ Yrs', '2 Clinics', '20+ Conditions'].map((tag) => (
+                {['20+ Yrs', '2 Clinics', '20+ Conditions'].map((tag) => (
                   <span
                     key={tag}
                     className="text-xs font-semibold px-2 py-0.5 rounded-full"
