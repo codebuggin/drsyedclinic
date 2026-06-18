@@ -141,7 +141,7 @@ export default function BookingForm() {
     setLoading(true)
     setError(null)
     try {
-      const { data: inserted, error: insertError } = await supabase.from('bookings').insert([{
+      const { error: insertError } = await supabase.from('bookings').insert([{
         name:           form.name,
         phone:          form.phone,
         location:       form.location,
@@ -150,9 +150,18 @@ export default function BookingForm() {
         time_slot:      timeSlotValue,
         message:        form.message,
         status:         'pending',
-      }]).select().single()
+      }])
       if (insertError) throw insertError
-      setTokenNumber(inserted?.token_number ?? null)
+
+      // Try to fetch token number — non-blocking, won't fail the booking
+      try {
+        const { count } = await supabase
+          .from('bookings')
+          .select('*', { count: 'exact', head: true })
+          .eq('preferred_date', form.date)
+        if (count) setTokenNumber(count)
+      } catch { /* token fetch failed silently */ }
+
       setSubmitted(true)
     } catch {
       setError('Something went wrong. Please call us directly at 09912384430')
