@@ -282,7 +282,7 @@ function Dashboard({ onLogout }) {
   const stats = [
     { label: 'Total Bookings',   value: totalCount,      color: 'text-white',         icon: <Calendar size={16} />,  note: null },
     { label: "Today's Bookings", value: todayCount,      color: 'text-[#4ade80]',     icon: <Clock size={16} />,     note: null },
-    { label: 'Yakutpura',        value: yakutCount,      color: 'text-[#60a5fa]',     icon: <MapPin size={16} />,    note: 'Mon, Wed & Sat · 10AM – 8PM' },
+    { label: 'Yakutpura',        value: yakutCount,      color: 'text-[#60a5fa]',     icon: <MapPin size={16} />,    note: 'Every day · 10AM – 8PM' },
     { label: 'Mallepally',       value: mallepallyCount, color: 'text-[#f59e0b]',     icon: <MapPin size={16} />,    note: 'Sun, Tue & Thu · 11AM–3PM & 5–8PM' },
   ]
 

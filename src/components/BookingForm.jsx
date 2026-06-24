@@ -6,8 +6,8 @@ const today = new Date().toISOString().split('T')[0]
 
 const branchSchedule = {
   Yakutpura: {
-    availableDays: [1, 3, 6],
-    note: 'Monday, Wednesday & Saturday',
+    availableDays: [0, 1, 2, 3, 4, 5, 6],
+    note: 'Every day',
     slots: [
       { label: 'Morning',   start: 10, end: 12, display: '10:00 AM – 12:00 PM' },
       { label: 'Afternoon', start: 12, end: 16, display: '12:00 PM – 4:00 PM' },
@@ -232,7 +232,7 @@ export default function BookingForm() {
                 'Consultation by Appointment Only',
                 'Personalised Treatment Plan',
                 'Safe, Natural, Zero Side Effects',
-                'Yakutpura: Mon, Wed & Sat · Mallepally: Sun, Tue & Thu',
+                'Yakutpura: Every day · Mallepally: Sun, Tue & Thu',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <span className="text-lg font-bold leading-snug" style={{ color: '#C9922A' }}>✅</span>
@@ -365,7 +365,7 @@ export default function BookingForm() {
                 {form.date && form.location && !dateValid && (
                   <p className="text-red-500 text-xs mt-1">
                     ⚠️ Dr. Tamizuddin is not available on this day at {form.location}.
-                    Please select a Mon/Wed/Sat for Yakutpura or Sun/Tue/Thu for Mallepally.
+                    Please select Sun, Tue or Thu for Mallepally.
                   </p>
                 )}
                 {form.date && form.location && dateValid && (

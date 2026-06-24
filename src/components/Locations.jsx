@@ -7,7 +7,7 @@ const locations = [
     name: 'Yakutpura Clinic',
     address: 'Srt Colony, Near Islamia College, Opp. Community Hall, Yakutpura, Hyderabad',
     phones: ['09912384430', '09493861087'],
-    timings: ['Monday, Wednesday & Saturday: 10:00 AM – 8:00 PM'],
+    timings: ['Every Day: 10:00 AM – 8:00 PM'],
   },
   {
     badge: 'Mallepally',
