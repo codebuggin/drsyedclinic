@@ -263,7 +263,7 @@ export default function Hero() {
             className="hidden md:flex flex-col gap-1 absolute top-28 right-2 bg-white shadow-lg rounded-2xl p-3 w-28 z-20"
           >
             <Clock size={16} style={{ color: '#1A4A2E' }} />
-            <p className="font-bold text-sm text-gray-800">Open Daily</p>
+            <p className="font-bold text-sm text-gray-800">Mon – Sat</p>
             <p className="text-xs text-gray-400">10am – 8pm</p>
           </motion.div>
 

@@ -6,12 +6,12 @@ const today = new Date().toISOString().split('T')[0]
 
 const branchSchedule = {
   Yakutpura: {
-    availableDays: [0, 1, 2, 3, 4, 5, 6],
-    note: 'Every day',
+    availableDays: [1, 2, 3, 4, 5, 6],
+    note: 'Monday – Saturday (Morning & Afternoon not available Tue/Thu)',
     slots: [
-      { label: 'Morning',   start: 10, end: 12, display: '10:00 AM – 12:00 PM' },
-      { label: 'Afternoon', start: 12, end: 16, display: '12:00 PM – 4:00 PM' },
-      { label: 'Evening',   start: 16, end: 20, display: '4:00 PM – 8:00 PM' },
+      { label: 'Morning',   start: 10, end: 12, display: '10:00 AM – 12:00 PM', days: [1, 3, 5, 6] },
+      { label: 'Afternoon', start: 12, end: 16, display: '12:00 PM – 4:00 PM',  days: [1, 3, 5, 6] },
+      { label: 'Evening',   start: 16, end: 20, display: '4:00 PM – 8:00 PM',   days: [1, 2, 3, 4, 5, 6] },
     ],
   },
   Mallepally: {
@@ -24,10 +24,15 @@ const branchSchedule = {
   },
 }
 
-function isDateAvailable(dateStr, location) {
-  if (!dateStr || !location) return false
+function getDayOfWeek(dateStr) {
+  if (!dateStr) return null
   const [y, m, d] = dateStr.split('-').map(Number)
-  const day = new Date(y, m - 1, d).getDay()
+  return new Date(y, m - 1, d).getDay()
+}
+
+function isDateAvailable(dateStr, location) {
+  const day = getDayOfWeek(dateStr)
+  if (day === null || !location) return false
   return branchSchedule[location]?.availableDays.includes(day) ?? false
 }
 
@@ -67,9 +72,13 @@ export default function BookingForm() {
   const isSelectedToday = form.date === today
   const schedule        = branchSchedule[form.location] ?? null
   const dateValid       = isDateAvailable(form.date, form.location)
+  const selectedDay     = getDayOfWeek(form.date)
 
   const availableSlots = schedule
-    ? schedule.slots.filter(s => !isSelectedToday || currentHour < s.end)
+    ? schedule.slots.filter(s => {
+        if (s.days && !s.days.includes(selectedDay)) return false
+        return !isSelectedToday || currentHour < s.end
+      })
     : []
 
   const allSlotsOver = isSelectedToday && !!schedule && availableSlots.length === 0
@@ -232,7 +241,7 @@ export default function BookingForm() {
                 'Consultation by Appointment Only',
                 'Personalised Treatment Plan',
                 'Safe, Natural, Zero Side Effects',
-                'Yakutpura: Every day · Mallepally: Sun, Tue & Thu',
+                'Yakutpura: Mon–Sat (Evening only Tue/Thu) · Mallepally: Sun, Tue & Thu',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <span className="text-lg font-bold leading-snug" style={{ color: '#C9922A' }}>✅</span>
@@ -365,7 +374,7 @@ export default function BookingForm() {
                 {form.date && form.location && !dateValid && (
                   <p className="text-red-500 text-xs mt-1">
                     ⚠️ Dr. Tamizuddin is not available on this day at {form.location}.
-                    Please select Sun, Tue or Thu for Mallepally.
+                    Please select Mon–Sat for Yakutpura or Sun/Tue/Thu for Mallepally.
                   </p>
                 )}
                 {form.date && form.location && dateValid && (
