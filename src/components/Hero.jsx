@@ -300,7 +300,11 @@ export default function Hero() {
           .marquee-track {
             display: flex;
             width: max-content;
+            max-width: none;
             animation: marquee 30s linear infinite;
+          }
+          .marquee-track span {
+            max-width: none;
           }
         `}</style>
         <div className="marquee-track">
