@@ -309,7 +309,9 @@ export default function Hero() {
               🌿 Allergy &nbsp;·&nbsp; Diabetes &nbsp;·&nbsp; Asthma &nbsp;·&nbsp; Arthritis &nbsp;·&nbsp;
               Obesity &nbsp;·&nbsp; Migraine &nbsp;·&nbsp; Skin Diseases &nbsp;·&nbsp; Hair Problems &nbsp;·&nbsp;
               Infertility &nbsp;·&nbsp; Blood Pressure &nbsp;·&nbsp; Kidney Stones &nbsp;·&nbsp;
-              Chronic Diseases &nbsp;·&nbsp; Children's Diseases &nbsp;·&nbsp;&nbsp;
+              Chronic Diseases &nbsp;·&nbsp; Children's Diseases &nbsp;·&nbsp; Autism &nbsp;·&nbsp;
+              ADHD &nbsp;·&nbsp; Autoimmune Disorders &nbsp;·&nbsp; Genetic Disorders &nbsp;·&nbsp;
+              Psychiatric Disorders &nbsp;·&nbsp;&nbsp;
             </span>
           ))}
         </div>

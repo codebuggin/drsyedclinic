@@ -5,7 +5,8 @@ const conditions = [
   'Gynec & Obstetric Problems', 'Piles', 'Sinusitis', 'Blood Pressure',
   'Liver Disease', 'Jaundice', 'Skin Diseases', "Children's Diseases",
   'Hair Problems', 'Kidney Stones', 'Infertility', 'Impotency',
-  'Organ Diseases', 'Chronic Diseases', 'Genetic Diseases',
+  'Organ Diseases', 'Chronic Diseases', 'Genetic Disorders',
+  'Autism', 'ADHD', 'Autoimmune Disorders', 'Psychiatric Disorders',
 ]
 
 const containerVariants = {
